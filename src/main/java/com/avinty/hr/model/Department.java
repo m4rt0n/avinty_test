@@ -1,6 +1,7 @@
 package com.avinty.hr.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,10 +15,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "departments")
 public class Department {
-
-	@ManyToMany(mappedBy = "departments")
-	private List<Employee> employees;
-	// = new ArrayList<>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,4 +38,12 @@ public class Department {
 
 	@Column(name = "updated_by")
 	private long updatedBy;
+
+	@ManyToMany(mappedBy = "departments")
+	private List<Employee> employees = new ArrayList<>();
+
+	public void addEmployee(Employee emp) {
+		employees.add(emp);
+	}
+
 }

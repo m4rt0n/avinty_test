@@ -1,6 +1,7 @@
 package com.avinty.hr.model;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -49,6 +50,9 @@ public class Employee {
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "employee_department", joinColumns = @JoinColumn(name = "manager_id", referencedColumnName = "dep_id"), inverseJoinColumns = @JoinColumn(name = "dep_id", referencedColumnName = "manager_id"))
-	private List<Department> departments;
-	// = new ArrayList<>();
+	private List<Department> departments = new ArrayList<>();
+
+	public void addDepartment(Department dept) {
+		departments.add(dept);
+	}
 }
