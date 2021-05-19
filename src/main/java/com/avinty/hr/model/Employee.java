@@ -68,14 +68,11 @@ public class Employee {
 	public Employee() {
 	}
 
-	public Employee(String email, String password, String fullName, Timestamp createdAt, long createdBy,
-			Timestamp updatedAt, long updatedBy) {
+	public Employee(String email, String password, String fullName, long createdBy, long updatedBy) {
 		this.email = email;
 		this.password = password;
 		this.fullName = fullName;
-		this.createdAt = createdAt;
 		this.createdBy = createdBy;
-		this.updatedAt = updatedAt;
 		this.updatedBy = updatedBy;
 	}
 

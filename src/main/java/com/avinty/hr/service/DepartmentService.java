@@ -1,6 +1,5 @@
 package com.avinty.hr.service;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +18,7 @@ public class DepartmentService {
 	public List<Department> getAllDepartments() {
 		List<Department> dList = new ArrayList<>();
 		dRepo.findAll().forEach((dList::add));
+		dList.forEach(d -> System.out.println(d.getId()));
 		return dList;
 	}
 
@@ -26,19 +26,16 @@ public class DepartmentService {
 		return dRepo.findById(id).orElseThrow(() -> new DepartmentNotFoundException(id));
 	}
 
-	public Department saveDepartment(String name, Timestamp createdAt, long createdBy, Timestamp updatedAt,
-			long updatedBy) {
-		Department d = new Department(name, createdAt, createdBy, updatedAt, updatedBy);
+	public Department saveDepartment(String name, long createdBy, long updatedBy) {
+		Department d = new Department(name, createdBy, updatedBy);
 		return dRepo.save(d);
 	}
 
-	public Department updateDepartment(long id, String name, Timestamp createdAt, long createdBy, Timestamp updatedAt,
-			long updatedBy) throws DepartmentNotFoundException {
+	public Department updateDepartment(long id, String name, long createdBy, long updatedBy)
+			throws DepartmentNotFoundException {
 		Department d = dRepo.findById(id).orElseThrow(() -> new DepartmentNotFoundException(id));
 		d.setName(name);
-		d.setCreatedAt(createdAt);
 		d.setCreatedBy(createdBy);
-		d.setUpdatedAt(updatedAt);
 		d.setUpdatedBy(updatedBy);
 		return dRepo.save(d);
 	}

@@ -59,11 +59,9 @@ public class Department {
 	public Department() {
 	}
 
-	public Department(String name, Timestamp createdAt, long createdBy, Timestamp updatedAt, long updatedBy) {
+	public Department(String name, long createdBy, long updatedBy) {
 		this.name = name;
-		this.createdAt = createdAt;
 		this.createdBy = createdBy;
-		this.updatedAt = updatedAt;
 		this.updatedBy = updatedBy;
 	}
 

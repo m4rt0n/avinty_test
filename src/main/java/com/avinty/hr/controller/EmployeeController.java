@@ -1,8 +1,5 @@
 package com.avinty.hr.controller;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,30 +32,28 @@ public class EmployeeController {
 	}
 
 	@GetMapping
-	public List<Employee> getAllEmployees() {
-		return eService.getAllEmployees();
+	public void getAllEmployees() {
+		eService.getAllEmployees();
 	}
 
 	@GetMapping("/{id}")
-	public Employee getEmployeeById(@PathVariable("id") long id) throws EmployeeNotFoundException {
-		return eService.getEmployeebyId(id);
+	public void getEmployeeById(@PathVariable("id") long id) throws EmployeeNotFoundException {
+		eService.getEmployeebyId(id);
 	}
 
 	@PostMapping
 	public Employee createEmployee(@RequestParam(value = "email") String email,
-			@RequestParam(value = "password") String password, @RequestParam(value = "fullName") String fullName,
-			@RequestParam(value = "createdAt") Timestamp createdAt, @RequestParam(value = "createdBy") long createdBy,
-			@RequestParam(value = "updatedAt") Timestamp updatedAt, @RequestParam(value = "updatedBy") long updatedBy) {
-		return eService.saveEmployee(email, password, fullName, createdAt, createdBy, updatedAt, updatedBy);
+			@RequestParam(value = "password") String password, @RequestParam(value = "fullname") String fullName,
+			@RequestParam(value = "createdby") long createdBy, @RequestParam(value = "updatedby") long updatedBy) {
+		return eService.saveEmployee(email, password, fullName, createdBy, updatedBy);
 	}
 
 	@PutMapping("/{id}")
 	public Employee updateEmployeeById(@PathVariable("id") long id, @RequestParam(value = "email") String email,
-			@RequestParam(value = "password") String password, @RequestParam(value = "fullName") String fullName,
-			@RequestParam(value = "createdAt") Timestamp createdAt, @RequestParam(value = "createdBy") long createdBy,
-			@RequestParam(value = "updatedAt") Timestamp updatedAt, @RequestParam(value = "updatedBy") long updatedBy)
+			@RequestParam(value = "password") String password, @RequestParam(value = "fullname") String fullName,
+			@RequestParam(value = "createdby") long createdBy, @RequestParam(value = "updatedby") long updatedBy)
 			throws EmployeeNotFoundException {
-		return eService.updateEmployee(id, email, password, fullName, createdAt, createdBy, updatedAt, updatedBy);
+		return eService.updateEmployee(id, email, password, fullName, createdBy, updatedBy);
 	}
 
 	@DeleteMapping("/{id}")

@@ -1,8 +1,5 @@
 package com.avinty.hr.controller;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +22,8 @@ public class DepartmentController {
 	DepartmentService dService;
 
 	@GetMapping
-	public List<Department> getAllDepartments() {
-		return dService.getAllDepartments();
+	public void getAllDepartments() {
+		dService.getAllDepartments();
 	}
 
 	@GetMapping("/{id}")
@@ -37,17 +34,15 @@ public class DepartmentController {
 
 	@PostMapping
 	public Department createDepartment(@RequestParam(value = "name") String name,
-			@RequestParam(value = "createdAt") Timestamp createdAt, @RequestParam(value = "createdBy") long createdBy,
-			@RequestParam(value = "updatedAt") Timestamp updatedAt, @RequestParam(value = "updatedBy") long updatedBy) {
-		return dService.saveDepartment(name, createdAt, createdBy, updatedAt, updatedBy);
+			@RequestParam(value = "createdby") long createdBy, @RequestParam(value = "updatedby") long updatedBy) {
+		return dService.saveDepartment(name, createdBy, updatedBy);
 	}
 
 	@PutMapping("/{id}")
 	public Department updateDepartmentById(@PathVariable("id") long id, @RequestParam(value = "name") String name,
-			@RequestParam(value = "createdAt") Timestamp createdAt, @RequestParam(value = "createdBy") long createdBy,
-			@RequestParam(value = "updatedAt") Timestamp updatedAt, @RequestParam(value = "updatedBy") long updatedBy)
+			@RequestParam(value = "createdby") long createdBy, @RequestParam(value = "updatedby") long updatedBy)
 			throws EmployeeNotFoundException, DepartmentNotFoundException {
-		return dService.updateDepartment(id, name, createdAt, createdBy, updatedAt, updatedBy);
+		return dService.updateDepartment(id, name, createdBy, updatedBy);
 	}
 
 	@DeleteMapping("/{id}")
