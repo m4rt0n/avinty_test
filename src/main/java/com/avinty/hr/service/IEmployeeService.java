@@ -1,8 +1,9 @@
 package com.avinty.hr.service;
 
-public interface IHrService {
+public interface IEmployeeService {
 
 	public String hello();
 
 	public void addEntities();
+
 }

@@ -8,5 +8,4 @@ import com.avinty.hr.model.Department;
 @Repository
 public interface DepartmentRepo extends CrudRepository<Department, Long> {
 
-	Department findByname(String name);
 }

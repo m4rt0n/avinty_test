@@ -56,9 +56,8 @@ public class Employee {
 	@Column(name = "updated_by")
 	private long updatedBy;
 
-	// { CascadeType.PERSIST, CascadeType.MERGE }
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "employee_department", joinColumns = @JoinColumn(name = "emp_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "dept_id", referencedColumnName = "id"))
+	@JoinTable(name = "employee_department", joinColumns = @JoinColumn(name = "emp_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "dep_id", referencedColumnName = "id"))
 	private List<Department> departments = new ArrayList<>();
 
 	public void addDepartment(Department dept) {
