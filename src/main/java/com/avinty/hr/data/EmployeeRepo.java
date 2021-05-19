@@ -8,4 +8,6 @@ import com.avinty.hr.model.Employee;
 @Repository
 public interface EmployeeRepo extends CrudRepository<Employee, Long> {
 
+	Employee findByfullName(String fullname);
+
 }

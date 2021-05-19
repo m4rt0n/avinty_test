@@ -14,9 +14,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employees")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
 
 	@Id
@@ -32,7 +40,7 @@ public class Employee {
 	@Column(name = "full_name", length = 200)
 	private String fullName;
 
-	// ???
+	@NotNull(message = "depId cannot be null")
 	@Column(name = "dep_id")
 	private long depId;
 
@@ -48,11 +56,107 @@ public class Employee {
 	@Column(name = "updated_by")
 	private long updatedBy;
 
+	// { CascadeType.PERSIST, CascadeType.MERGE }
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "employee_department", joinColumns = @JoinColumn(name = "manager_id", referencedColumnName = "dep_id"), inverseJoinColumns = @JoinColumn(name = "dep_id", referencedColumnName = "manager_id"))
+	@JoinTable(name = "employee_department", joinColumns = @JoinColumn(name = "emp_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "dept_id", referencedColumnName = "id"))
 	private List<Department> departments = new ArrayList<>();
 
 	public void addDepartment(Department dept) {
 		departments.add(dept);
+	}
+
+	// ----------------------------------------------
+	public Employee() {
+	}
+
+	public Employee(String email, String password, String fullName, Timestamp createdAt, long createdBy,
+			Timestamp updatedAt, long updatedBy) {
+		this.email = email;
+		this.password = password;
+		this.fullName = fullName;
+		this.createdAt = createdAt;
+		this.createdBy = createdBy;
+		this.updatedAt = updatedAt;
+		this.updatedBy = updatedBy;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public long getDepId() {
+		return depId;
+	}
+
+	public void setDepId(long depId) {
+		this.depId = depId;
+	}
+
+	public Timestamp getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Timestamp createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public long getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(long createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Timestamp getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(Timestamp updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	public long getUpdatedBy() {
+		return updatedBy;
+	}
+
+	public void setUpdatedBy(long updatedBy) {
+		this.updatedBy = updatedBy;
+	}
+
+	public List<Department> getDepartments() {
+		return departments;
+	}
+
+	public void setDepartments(List<Department> departments) {
+		this.departments = departments;
 	}
 }

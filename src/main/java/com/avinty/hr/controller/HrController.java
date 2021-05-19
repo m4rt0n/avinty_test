@@ -2,6 +2,7 @@ package com.avinty.hr.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,9 @@ public class HrController {
 		return service.hello();
 	}
 
-	/*
-	 * @PostMapping("/dostuff") public void doStuff() { service.doStuff(); }
-	 */
+	@PostMapping("/addstuff")
+	public void doStuff() {
+		service.addEntities();
+	}
+
 }

@@ -4,5 +4,5 @@ public interface IHrService {
 
 	public String hello();
 
-	public void doStuff();
+	public void addEntities();
 }
