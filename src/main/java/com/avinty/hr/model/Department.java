@@ -1,6 +1,6 @@
 package com.avinty.hr.model;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -22,7 +23,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Department {
+@EqualsAndHashCode(callSuper = true)
+public class Department extends CustomTimeStamps {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,13 +38,13 @@ public class Department {
 	private long managerId;
 
 	@Column(name = "created_at")
-	private Timestamp createdAt;
+	private LocalDateTime createdAt;
 
 	@Column(name = "createdBy")
 	private long createdBy;
 
 	@Column(name = "updated_at")
-	private Timestamp updatedAt;
+	private LocalDateTime updatedAt;
 
 	@Column(name = "updated_by")
 	private long updatedBy;
@@ -89,11 +91,11 @@ public class Department {
 		this.managerId = managerId;
 	}
 
-	public Timestamp getCreatedAt() {
+	public LocalDateTime getCreatedAt() {
 		return createdAt;
 	}
 
-	public void setCreatedAt(Timestamp createdAt) {
+	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
 
@@ -105,11 +107,11 @@ public class Department {
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getUpdatedAt() {
+	public LocalDateTime getUpdatedAt() {
 		return updatedAt;
 	}
 
-	public void setUpdatedAt(Timestamp updatedAt) {
+	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 

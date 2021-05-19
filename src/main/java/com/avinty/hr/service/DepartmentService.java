@@ -18,7 +18,6 @@ public class DepartmentService {
 	public List<Department> getAllDepartments() {
 		List<Department> dList = new ArrayList<>();
 		dRepo.findAll().forEach((dList::add));
-		dList.forEach(d -> System.out.println(d.getId()));
 		return dList;
 	}
 

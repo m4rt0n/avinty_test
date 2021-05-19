@@ -1,7 +1,5 @@
 package com.avinty.hr.service;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,9 +25,6 @@ public class EmployeeService implements IEmployeeService {
 
 	@Override
 	public void addEntities() {
-
-		Timestamp ts = Timestamp.valueOf(LocalDateTime.now());
-
 		Employee e1 = new Employee("e1@mail.com", "e1pw", "e1fname", 1, 1);
 		Employee e2 = new Employee("e2@mail.com", "e2pw", "e2fname", 1, 1);
 		Employee e3 = new Employee("e3@mail.com", "e3pw", "e3fname", 1, 1);
@@ -44,6 +39,7 @@ public class EmployeeService implements IEmployeeService {
 		eRepo.save(e1);
 		eRepo.save(e2);
 		eRepo.save(e3);
+
 	}
 
 	public List<Employee> getAllEmployees() {
