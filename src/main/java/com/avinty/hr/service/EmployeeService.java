@@ -13,17 +13,15 @@ import com.avinty.hr.model.Employee;
 import com.avinty.hr.model.EmployeeNotFoundException;
 
 @Service
-public class EmployeeService implements IEmployeeService {
+public class EmployeeService {
 	@Autowired
 	EmployeeRepo eRepo;
 
-	@Override
 	public String hello() {
 		return "Hello";
 
 	}
 
-	@Override
 	public void addEntities() {
 		Employee e1 = new Employee("e1@mail.com", "e1pw", "e1fname", 1, 1);
 		Employee e2 = new Employee("e2@mail.com", "e2pw", "e2fname", 1, 1);
