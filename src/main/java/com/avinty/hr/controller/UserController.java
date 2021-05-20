@@ -16,6 +16,7 @@ import com.avinty.hr.service.UserService;
 
 @RestController
 @RequestMapping(path = "/API/V1/users")
+//@CrossOrigin("http://localhost:5000")
 public class UserController {
 	@Autowired
 	UserService uService;
