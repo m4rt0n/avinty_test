@@ -1,7 +1,5 @@
 package com.avinty.hr.model;
 
-import java.util.Base64;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +7,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Type;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class User {
 
 	@Id
@@ -29,15 +34,15 @@ public class User {
 	private String password;
 
 //	@Column(columnDefinition = "PrimitiveByteArrayBlobType")
-	@Type(type = "org.hibernate.type.BinaryType")
-	private Base64 profilePicture;
+//	@Type(type = "org.hibernate.type.BinaryType")
+	private String profilePicture;
 
 //---------------------------------------
 
 	public User() {
 	}
 
-	public User(String username, String email, String password, Base64 profilePicture) {
+	public User(String username, String email, String password, String profilePicture) {
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -72,11 +77,11 @@ public class User {
 		this.password = password;
 	}
 
-	public Base64 getProfilePicture() {
+	public String getProfilePicture() {
 		return profilePicture;
 	}
 
-	public void setProfilePicture(Base64 profilePicture) {
+	public void setProfilePicture(String profilePicture) {
 		this.profilePicture = profilePicture;
 	}
 }

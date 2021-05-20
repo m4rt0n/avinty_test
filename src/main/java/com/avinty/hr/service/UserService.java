@@ -1,7 +1,6 @@
 package com.avinty.hr.service;
 
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ public class UserService {
 	@Autowired
 	UserRepo uRepo;
 
-	public void uploadProfilePicture(long id, Base64 profilePicture) throws UserNotFoundException {
+	public void uploadProfilePicture(long id, String profilePicture) throws UserNotFoundException {
 		User u = uRepo.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 		u.setProfilePicture(profilePicture);
 		uRepo.save(u);
@@ -32,12 +31,12 @@ public class UserService {
 		return uRepo.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 	}
 
-	public User saveUser(String username, String email, String password, Base64 profilePicture) {
-		User u = new User(username, email, password, profilePicture);
+	public User saveUser(String username, String email, String password, String profilePictureString) {
+		User u = new User(username, email, password, profilePictureString);
 		return uRepo.save(u);
 	}
 
-	public User updateUser(long id, String username, String email, String password, Base64 profilePicture)
+	public User updateUser(long id, String username, String email, String password, String profilePicture)
 			throws UserNotFoundException {
 		User u = uRepo.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 		u.setUsername(username);

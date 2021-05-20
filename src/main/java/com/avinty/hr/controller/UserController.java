@@ -1,7 +1,5 @@
 package com.avinty.hr.controller;
 
-import java.util.Base64;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +22,7 @@ public class UserController {
 
 	@PostMapping("/uploadProfilePics")
 	public void uploadProfilePicture(@RequestParam(value = "id") long id,
-			@RequestParam(value = "profilePicture") Base64 profilePicture) throws UserNotFoundException {
+			@RequestParam(value = "profilePicture") String profilePicture) throws UserNotFoundException {
 		uService.uploadProfilePicture(id, profilePicture);
 	}
 
@@ -38,17 +36,17 @@ public class UserController {
 		return uService.getUserbyId(id);
 	}
 
-	@PostMapping
+	@PostMapping("/createuser")
 	public User createUser(@RequestParam(value = "username") String username,
 			@RequestParam(value = "email") String email, @RequestParam(value = "password") String password,
-			@RequestParam(value = "profilePicture") Base64 profilePicture) {
+			@RequestParam(value = "profilePicture") String profilePicture) {
 		return uService.saveUser(username, email, password, profilePicture);
 	}
 
 	@PutMapping("/{id}")
 	public User updateUserById(@PathVariable("id") long id, @RequestParam(value = "username") String username,
 			@RequestParam(value = "email") String email, @RequestParam(value = "password") String password,
-			@RequestParam(value = "profilepicture") Base64 profilePicture) throws UserNotFoundException {
+			@RequestParam(value = "profilepicture") String profilePicture) throws UserNotFoundException {
 		return uService.updateUser(id, username, email, password, profilePicture);
 	}
 
