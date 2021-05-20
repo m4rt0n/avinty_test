@@ -16,16 +16,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employees")
 @Data
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 public class Employee extends CustomTimeStamps {
 
 	@Id
@@ -65,10 +60,6 @@ public class Employee extends CustomTimeStamps {
 		departments.add(dept);
 	}
 
-	// ----------------------------------------------
-	public Employee() {
-	}
-
 	public Employee(String email, String password, String fullName, long createdBy, long updatedBy) {
 		this.email = email;
 		this.password = password;
@@ -77,79 +68,4 @@ public class Employee extends CustomTimeStamps {
 		this.updatedBy = updatedBy;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public long getDepId() {
-		return depId;
-	}
-
-	public void setDepId(long depId) {
-		this.depId = depId;
-	}
-
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public long getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(long createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public long getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(long updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
-	public List<Department> getDepartments() {
-		return departments;
-	}
-
-	public void setDepartments(List<Department> departments) {
-		this.departments = departments;
-	}
 }

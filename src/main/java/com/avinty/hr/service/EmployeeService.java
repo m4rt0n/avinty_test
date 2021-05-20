@@ -37,7 +37,6 @@ public class EmployeeService {
 		eRepo.save(e1);
 		eRepo.save(e2);
 		eRepo.save(e3);
-
 	}
 
 	public List<Employee> getAllEmployees() {

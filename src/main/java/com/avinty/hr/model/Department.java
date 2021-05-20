@@ -13,15 +13,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "departments")
 @Data
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 public class Department extends CustomTimeStamps {
 
 	@Id
@@ -54,74 +50,10 @@ public class Department extends CustomTimeStamps {
 		employees.add(emp);
 	}
 
-	// ----------------------------------------------------
-
-	public Department() {
-	}
-
 	public Department(String name, long createdBy, long updatedBy) {
 		this.name = name;
 		this.createdBy = createdBy;
 		this.updatedBy = updatedBy;
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getManagerId() {
-		return managerId;
-	}
-
-	public void setManagerId(long managerId) {
-		this.managerId = managerId;
-	}
-
-	public LocalDateTime getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public long getCreatedBy() {
-		return createdBy;
-	}
-
-	public void setCreatedBy(long createdBy) {
-		this.createdBy = createdBy;
-	}
-
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public long getUpdatedBy() {
-		return updatedBy;
-	}
-
-	public void setUpdatedBy(long updatedBy) {
-		this.updatedBy = updatedBy;
-	}
-
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
 }
