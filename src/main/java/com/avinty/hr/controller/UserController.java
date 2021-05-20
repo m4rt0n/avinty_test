@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,18 +17,17 @@ import com.avinty.hr.service.UserService;
 
 @RestController
 @RequestMapping(path = "/API/V1/users")
-//@CrossOrigin("http://localhost:5000")
 public class UserController {
 	@Autowired
 	UserService uService;
 
-	@PostMapping("/uploadProfilePics")
-	public void uploadProfilePicture(@RequestParam(value = "id") long id,
-			@RequestParam(value = "profilePicture") String profilePicture) throws UserNotFoundException {
+	@PostMapping("/{id}/uploadProfilePics")
+	public void uploadProfilePicture(@PathVariable("id") long id, @RequestBody String profilePicture)
+			throws UserNotFoundException {
 		uService.uploadProfilePicture(id, profilePicture);
 	}
 
-	@GetMapping()
+	@GetMapping
 	public void getAllUsers() {
 		uService.getAllUsers();
 	}

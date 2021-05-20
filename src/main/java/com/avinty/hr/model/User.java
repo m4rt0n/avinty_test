@@ -8,10 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "users")
 @Data
+@NoArgsConstructor
 public class User {
 
 	@Id
@@ -27,6 +29,7 @@ public class User {
 	@Column(length = 20)
 	private String password;
 
+	@Column(columnDefinition = "text")
 	private String profilePicture;
 
 	public User(String username, String email, String password, String profilePicture) {
