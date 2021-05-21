@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.avinty.hr.model.Department;
 import com.avinty.hr.model.DepartmentNotFoundException;
-import com.avinty.hr.model.EmployeeNotFoundException;
 import com.avinty.hr.service.DepartmentService;
 
 @RestController
@@ -27,8 +26,7 @@ public class DepartmentController {
 	}
 
 	@GetMapping("/{id}")
-	public Department getDepartmentById(@PathVariable("id") long id)
-			throws EmployeeNotFoundException, DepartmentNotFoundException {
+	public Department getDepartmentById(@PathVariable("id") long id) throws DepartmentNotFoundException {
 		return dService.getDepartmentbyId(id);
 	}
 
@@ -41,7 +39,7 @@ public class DepartmentController {
 	@PutMapping("/{id}")
 	public Department updateDepartmentById(@PathVariable("id") long id, @RequestParam(value = "name") String name,
 			@RequestParam(value = "createdby") long createdBy, @RequestParam(value = "updatedby") long updatedBy)
-			throws EmployeeNotFoundException, DepartmentNotFoundException {
+			throws DepartmentNotFoundException {
 		return dService.updateDepartment(id, name, createdBy, updatedBy);
 	}
 
